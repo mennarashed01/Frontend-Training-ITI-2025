@@ -1,0 +1,47 @@
+h1 {
+    color:#fff;
+    background-image: url(../images/forms.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 15px 20px;
+}
+h3 {
+    color: #016601;
+    margin-top: 0;
+    font-weight: bolder;
+}
+hr {
+    border-top: 2px dashed #76b020;
+}
+form {
+    width: 90%;
+    margin:0 auto;
+    padding: 0 10px;
+    border: 2px solid transparent ;
+}
+div {
+    display: inline-block;
+}
+.f1 {
+    padding: 20px;
+}
+.name ,.phone,.fname,.lname,.email, .amount, .method{
+    width: 45%;
+}
+input ,select{
+    width: 95%;
+}
+.add {
+    width: calc(90% + 20px);
+}
+.city , .state, .code {
+    width: 30%;
+}
+.footer {
+    background-color: #76b020;
+    width: 95%;
+    padding: 15px;
+}
+button {
+    padding: 5px 10px;
+}

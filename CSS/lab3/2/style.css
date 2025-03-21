@@ -1,0 +1,23 @@
+div{
+    width: 100%;
+}
+table{
+    border-spacing: 0;
+}
+img {
+    width: 100px;
+    margin-right: 10px;
+}
+h4 {
+    
+    margin-top: 0;
+    color: rgb(35, 156, 196);
+}
+td {
+    border-bottom: 1px solid black;
+}
+button {
+    margin-left: 50px;
+    padding: 5px;
+    font-size: 13px;
+}

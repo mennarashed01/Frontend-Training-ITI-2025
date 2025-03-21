@@ -1,0 +1,44 @@
+body {
+    background-image: url(../images/background.png);
+}
+h1 {
+    text-align: center;
+    color: rgb(112, 164, 100);
+    font-weight: bolder;
+    text-shadow: 0 0 2px rgba(255, 68, 0, 0.772);
+}
+p {
+    text-align: center;
+    color:#5f891b;
+    font-weight: 800;
+}
+span {
+    color: brown;
+    font-style: italic;
+    font-weight: bolder;
+}
+hr {
+    border-top: 6px brown dotted;
+}
+.content {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+}
+.content h4 {
+    color: brown;
+}
+
+h2 {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    color:#5f891b;
+}
+#end {
+    text-align: center;
+    font-size: 16px;
+    font-style: italic;
+    color: brown;
+    font-weight: bold;
+}

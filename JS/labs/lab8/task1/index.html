@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .option-group {
+            border-bottom: 2px solid orange;
+            border-left: 2px solid orange;
+            width: 50%;
+            padding-bottom: 5px;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p id="text">JAVASCRIPT IS A VERSATILE AND DYNAMIC PROGRAMMING LANGUAGE USED FOR WEB DEVELOPMENT. IT ENABLES INTERACTIVE AND RESPONSIVE USER EXPERIENCES ACROSS DIFFERENT PLATFORMS.</p>
+        
+        <div class="options">
+            
+            <div class="option-group">
+                <h4>textSize</h4>
+                <label><input type="radio" name="fontSize" value="14px"> 14px</label>
+                <label><input type="radio" name="fontSize" value="18px" checked> 18px</label>
+                <label><input type="radio" name="fontSize" value="22px"> 22px</label>
+                <label><input type="radio" name="fontSize" value="26px"> 26px</label>
+                <label><input type="radio" name="fontSize" value="30px"> 30px</label>
+            </div>
+            
+            <div class="option-group">
+                <h4>textAlign</h4>
+                <label><input type="radio" name="textAlign" value="right" checked> right</label>
+                <label><input type="radio" name="textAlign" value="center">center </label>
+                <label><input type="radio" name="textAlign" value="left">left </label>
+            </div>
+
+            
+            <div class="option-group">
+                <h4>Margin</h4>
+                <label><input type="radio" name="margin" value="5px"> 5px</label>
+                <label><input type="radio" name="margin" value="10px" checked> 10px</label>
+                <label><input type="radio" name="margin" value="20px"> 20px</label>
+                <label><input type="radio" name="margin" value="30px"> 30px</label>
+            </div>
+
+            
+            <div class="option-group">
+                <h4>Padding</h4>
+                <label><input type="radio" name="padding" value="5px"> 5px</label>
+                <label><input type="radio" name="padding" value="10px" checked> 10px</label>
+                <label><input type="radio" name="padding" value="20px"> 20px</label>
+                <label><input type="radio" name="padding" value="30px"> 30px</label>
+            </div>
+
+            
+            <div class="option-group">
+                <h4>bordertype</h4>
+                <label><input type="radio" name="border" value="none"> none</label>
+                <label><input type="radio" name="border" value="3px solid black" checked> solid </label>
+                <label><input type="radio" name="border" value="3px dashed black">dashed </label>
+                <label><input type="radio" name="border" value="3px dotted black">dotted</label>
+                <label><input type="radio" name="border" value="5px double black"> double</label>
+            </div>
+
+            
+            <div class="option-group">
+                <h4>borderColor</h4>
+                <label><input type="radio" name="borderColor" value="black" checked> black</label>
+                <label><input type="radio" name="borderColor" value="red"> red</label>
+                <label><input type="radio" name="borderColor" value="blue">blue </label>
+                <label><input type="radio" name="borderColor" value="green"> green</label>
+                <label><input type="radio" name="borderColor" value="purple">purple</label>
+            </div>
+        </div>
+    </div>
+    <script>        
+            var textElement = document.getElementById("text");
+
+            function addChangeListener(name, styleProperty) {
+                var radios = document.getElementsByName(name);
+                for (var i = 0; i < radios.length; i++) {
+                    radios[i].addEventListener("change", function () {
+                        textElement.style[styleProperty] = this.value;
+                    });
+                }
+            }
+
+            addChangeListener("fontSize", "fontSize");
+            addChangeListener("textAlign", "textAlign");
+            addChangeListener("margin", "margin");
+            addChangeListener("padding", "padding");
+            addChangeListener("border", "border");
+            addChangeListener("borderColor", "borderColor");
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Table</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container */
+        .container {
+            width: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Input & Buttons */
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background-color: #218838;
+        }
+
+        .count-btn {
+            background-color: #007bff;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .count-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #e9e9e9;
+        }
+
+        /* Row Count */
+        #rowCount {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>📰 News Table</h2>
+        <input type="text" id="newsInput" placeholder="Enter your news..." onkeypress="handleKeyPress(event)">
+        <button class="add-btn" onclick="addNews()">Add</button>
+
+        <table id="newsTable">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>News</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <button class="count-btn" onclick="countRows()">Count Rows</button>
+        <p id="rowCount"></p>
+    </div>
+
+    <script>
+        let counter = 1;
+
+        function addNews() {
+            let newsInput = document.getElementById("newsInput");
+            let newsText = newsInput.value.trim();
+
+            if (newsText === "") {
+                alert("Please enter some news!");
+                return;
+            }
+
+            let table = document.getElementById("newsTable").getElementsByTagName('tbody')[0];
+            let newRow = table.insertRow();
+
+            let cell1 = newRow.insertCell(0);
+            let cell2 = newRow.insertCell(1);
+
+            cell1.textContent = counter;
+            cell2.textContent = newsText;
+
+            counter++;
+            newsInput.value = "";
+            newsInput.focus();
+
+            countRows();  // Update row count automatically
+        }
+
+        function countRows() {
+            let rowCount = document.getElementById("newsTable").getElementsByTagName('tbody')[0].rows.length;
+            document.getElementById("rowCount").textContent = "Total Rows: " + rowCount;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                addNews();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

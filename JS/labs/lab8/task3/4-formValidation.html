@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Form Validation using a sample registration form</title>
+    <style type="text/css">
+        input, select, table, textarea {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #b7b7b7;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            margin-left: 5px;
+            font: normal 16px/normal "Times New Roman", Times, serif;
+            color: rgba(0,142,198,1);
+            -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2);
+            box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
+        }
+
+        th {
+            border: none;
+            -webkit-border-radius: 3px 0 0 3px;
+            border-radius: 3px 0 0 3px;
+            font: normal normal bold 19px/2 Verdana, Geneva, sans-serif;
+            color: black;
+            background: rgba(255,221,221,1);
+            text-align: left;
+            width: 100px;
+        }
+
+        span {
+            font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
+            color: red;
+        }
+
+        .Error {
+            background: rgba(255,221,221,1);
+        }
+
+        .Espan {
+            font: normal normal bold 8px/2 Verdana, Geneva, sans-serif;
+            color: red;
+        }
+    </style>
+    <script>
+        function  checkAll(){
+            alert("check controls data");
+            //all controls checkd 
+        }
+    </script>
+
+</head>
+
+    <body>
+        <form name='registration'  >
+            <table>
+                <tr>
+                    <h1>Registration Form</h1>
+                </tr>
+                
+                <tr>
+                    <th><label for="username">Name:</label></th>
+                    <td><input type="text" name="username" size="50" />
+                        <span id="uname" class="espan" style="display:none">UserName can not be empty</span></td>
+                </tr>
+                <tr>
+                    <th><label for="userid">User id:</label></th>
+                    <td>
+                        <input type="text" name="userid" size="12" maxlength="10" />
+                        <span id="uid" class"espan" style="display:none">User Name must numbers</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="country">Country:</label></th>
+                    <td>
+                        <select name="country" onch>
+                            <option selected="" value="Default">(Please select a country)</option>
+                            <option value="112233">Egypt</option>
+                            <option value="223344">KSA</option>
+                            <option value="334455">UAE</option>
+                            <option value="445566">Kuwait</option>
+                            <option value="556677">USA</option>
+                        </select>
+                        <span id="countryId"></span>
+                        <span id="counteryVa" class"espan" style="display:none">Counter must be choose</span>
+                    </td>
+                </tr>   
+                <tr>
+                    <th><label for="email">Email:</label></th>
+                    <td><input type="text" name="email" size="50" /></td>
+                </tr>
+                <tr>
+                    <th><label for="passid">Password:</label></th>
+                    <td><input type="password" name="passid" size="12" /></td>
+                </tr>
+                <tr>
+                    <th><label for="passconfirm">Confirm Password:</label></th>
+                    <td><input type="password" name="passconfirm" size="12" /></td>
+                </tr>
+                <tr>
+                    <th><label id="gender">Sex:</label></th>
+                    <td>
+                        <input type="radio" name="sex" value="Male" checked>Male</input>
+                        <input type="radio" name="sex" value="Female">Female</input>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label>Languages:</label></th>
+                    <td>
+                        <input type="checkbox" name="Uint" value="JavaScript" checked>JavaScript</input>
+                        <input type="checkbox" name="Uint" value="C#">C#</input>
+                        <input type="checkbox" name="Uint" value="SQL Server">SQL Server</input>
+                        <input type="checkbox" name="Uint" value="ASP.Net">ASP.Net</input>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="Submit" onclick="return checkAll();" />
+                        <input type="reset" name="reset" value="Reset"  />
+                        
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            //form validation
+            function checkAll() {
+                let isValid = true;
+
+                // 1- Name must be required
+                let name = document.registration.username;
+                let nameError = document.getElementById("uname");
+                let nameRegex = /^[A-Za-z0-9]+$/;
+
+                if (name.value.trim() === "") {
+                    nameError.style.display = "inline";
+                    nameError.textContent = "User Name cannot be empty";
+                    name.classList.add("Error");
+                    isValid = false;
+                } else if (!nameRegex.test(name.value)) {  // 2- Name accept numbers and char (Regex)
+                    nameError.style.display = "inline";
+                    nameError.textContent = "User Name must contain only letters and numbers";
+                    name.classList.add("Error");
+                    isValid = false;
+                } else {
+                    nameError.style.display = "none";
+                    name.classList.remove("Error");
+                }
+
+                // 3- User ID must be numbers only, min 5, max 10
+                let userId = document.registration.userid;
+                let userIdError = document.getElementById("uid");
+                let userIdRegex = /^[0-9]{5,10}$/;
+
+                if (!userIdRegex.test(userId.value)) {
+                    userIdError.style.display = "inline";
+                    userIdError.textContent = "User ID must be 5-10 digits";
+                    userId.classList.add("Error");
+                    isValid = false;
+                } else {
+                    userIdError.style.display = "none";
+                    userId.classList.remove("Error");
+                }
+
+                // 4- Country must be chosen
+                let country = document.registration.country;
+                let countryError = document.getElementById("counteryVa");
+
+                if (country.value === "Default") {
+                    countryError.style.display = "inline";
+                    countryError.textContent = "You must select a country";
+                    country.classList.add("Error");
+                    isValid = false;
+                } else {
+                    countryError.style.display = "none";
+                    country.classList.remove("Error");
+                }
+
+                // 5- Email must be in a valid format
+                let email = document.registration.email;
+                let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                if (!emailRegex.test(email.value)) {
+                    alert("Please enter a valid email address!");
+                    isValid = false;
+                }
+
+                // 6- Password must match confirm password, min 10 max 20, and contain numbers, chars, special chars
+                let password = document.registration.passid;
+                let confirmPassword = document.registration.passconfirm;
+                let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,20}$/;
+
+                if (!passwordRegex.test(password.value)) {
+                    alert("Password must be 10-20 characters long, contain letters, numbers, and special characters");
+                    isValid = false;
+                } else if (password.value !== confirmPassword.value) {
+                    alert("Passwords do not match!");
+                    isValid = false;
+                }
+
+                // 7- Gender must be chosen
+                let genderSelected = document.querySelector('input[name="sex"]:checked');
+
+                if (!genderSelected) {
+                    alert("You must select a gender!");
+                    isValid = false;
+                }
+
+                // 8- Checkbox languages must be checked at least two
+                let languages = document.querySelectorAll('input[name="Uint"]:checked');
+
+                if (languages.length < 2) {
+                    alert("You must select at least two languages!");
+                    isValid = false;
+                }
+
+                return isValid; // Return true if all validation passed
+            }
+        </script>
+    </body>
+</html>
